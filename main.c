@@ -1,39 +1,30 @@
 #include <stdio.h>
-#include "funciones.h"
+#include "opc.h"
 
-int main (int argc, char *argv[]) {
+int main() {
+    int opcion;
+    do {
+        printf("\n--- Sistema de Gestion de Biblioteca ---\n");
+        printf("1. Registrar libro\n");
+        printf("2. Mostrar lista de libros\n");
+        printf("3. Buscar libro (por titulo o ID)\n");
+        printf("4. Cambiar estado de un libro\n");
+        printf("5. Eliminar libro\n");
+        printf("6. Salir\n");
+        printf("Ingrese una opción: ");
+        scanf("%d", &opcion);
+        getchar(); // Limpiar buffer
 
-    struct Libro libros[20];
-    int opc;
-    int i=0;
-    do{
-    opc = menu();
-    switch (opc)
-    {
-        case 1:
-            registrarLibros(libros, i);
-            break;
-        case 2:
-            mostrarLibros(libros);
-            break;
-        case 3:
-            int id;
-            printf("Ingrese el id del libro a buscar: ");
-            scanf("%d", &id);
-            buscarLibroId(libros, id);
-            i++;
-            break;
-        case 4:
-            char titulo[100];
-            printf("Ingrese el titulo del libro a buscar: ");
-            scanf("%s", titulo);
-            buscarLibroTitulo(libros, titulo);
-            break;
-        
-
-    }
-    }while(opc != 7);
-
-
+        switch (opcion) {
+            case 1: registrarLibro(); break;
+            case 2: mostrarLibros(); break;
+            case 3: buscarLibro(); break;
+            case 4: actualizarEstadoLibro(); break;
+            case 5: eliminarLibro(); break;
+            case 6: printf("Saliendo del programa.\n"); break;
+            default: printf("Opcion no valida. Intente de nuevo.\n");
+        }
+    } while (opcion != 6);
+    
     return 0;
 }
