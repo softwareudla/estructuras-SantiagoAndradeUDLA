@@ -83,13 +83,13 @@ void mostrarLibros() {
 
 void buscarLibro() {
     char criterio[100];
-    int esNumero = 1; // Bandera para determinar si el criterio es numérico
+    int esNumero = 1; // Bandera para determinar si el criterio es numrico
 
-    printf("Ingrese el título o ID del libro a buscar: ");
+    printf("Ingrese el titulo o ID del libro a buscar: ");
     fgets(criterio, sizeof(criterio), stdin);
     criterio[strcspn(criterio, "\n")] = '\0';
 
-    // Verificar si el criterio contiene solo dígitos
+    // Verificar si el criterio contiene solo digitos
     for (int j = 0; criterio[j] != '\0'; j++) {
         if (criterio[j] < '0' || criterio[j] > '9') {
             esNumero = 0; // No es un número
@@ -97,7 +97,7 @@ void buscarLibro() {
         }
     }
 
-    // Si es un número, convertir manualmente a entero
+    // Si es un numero, convertir manualmente a entero
     int idBuscado = 0;
     if (esNumero) {
         for (int j = 0; criterio[j] != '\0'; j++) {
@@ -109,7 +109,7 @@ void buscarLibro() {
         if ((esNumero && biblioteca[i].id == idBuscado) || 
             (!esNumero && strcmp(biblioteca[i].titulo, criterio) == 0)) {
             printf("\nLibro encontrado:\n");
-            printf("ID: %d\nTítulo: %s\nAutor: %s\nAño: %d\nEstado: %s\n",
+            printf("ID: %d\nTitulo: %s\nAutor: %s\nAnio: %d\nEstado: %s\n",
                    biblioteca[i].id,
                    biblioteca[i].titulo,
                    biblioteca[i].autor,
